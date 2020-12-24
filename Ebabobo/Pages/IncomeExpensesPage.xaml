@@ -8,43 +8,30 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IncomeExpensesPage">
 
-<Grid Background="Bisque">
+    <Grid Background="Bisque">
         <Grid.ColumnDefinitions>
             <ColumnDefinition ></ColumnDefinition>
             <ColumnDefinition ></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="5 0 0 0">
             <TextBlock FontWeight="Bold" FontSize="15" Margin="0 5 0 0">Список Доходов</TextBlock>
-            <ListView Margin="0 5 0 0" Background="Gray"  Name="Income" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" MouseDoubleClick="ContactList_MouseDoubleClick" MouseRightButtonUp="ContactList_MouseDoubleClick" >
+            <Grid x:Name="listOfIncome" Margin="0 5 0 0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" >
+                <DataGrid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  x:Name="listOfIncomeGrid" ItemsSource="{Binding}">
+                </DataGrid>
+            </Grid>
 
-                            <ListView.View>
 
-                                <GridView>
-                                    <GridViewColumn Header="TypeID"  DisplayMemberBinding="{Binding }" />
-                                    <GridViewColumn Header="Sum"  DisplayMemberBinding="{Binding }" />
-                        <GridViewColumn Header="Date"  DisplayMemberBinding="{Binding }" />
-                        <GridViewColumn Header="Frequency"  DisplayMemberBinding="{Binding }" />
-                    </GridView>
-                            </ListView.View>
-
-                        </ListView>
-                    </StackPanel>
-                    <StackPanel  Grid.Row="0" Grid.Column="2" Margin="5 0 0 0">
+            <Button   Margin="0 5 0 0" Width="200"  Click="Button_Click">Добавить случайный доход</Button>
+        </StackPanel>
+        <StackPanel  Grid.Row="0" Grid.Column="2" Margin="5 0 0 0">
             <TextBlock FontWeight="Bold" FontSize="15" Margin="0 5 0 0">Список Расходов</TextBlock>
-            <ListView Margin="0 5 0 0"  Background="Gray" Name="Outcome" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" MouseDoubleClick="ContactList_MouseDoubleClick" MouseRightButtonUp="ContactList_MouseDoubleClick" >
 
-                            <ListView.View>
+            <Grid  x:Name="listOfOutcome" Margin="0 5 0 0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" >
+                <DataGrid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  x:Name="listOfOutcomeGrid" ItemsSource="{Binding}">
+                </DataGrid>
+            </Grid>
 
-                                <GridView>
-                                    <GridViewColumn Header="TypeID"  DisplayMemberBinding="{Binding }" />
-                                    <GridViewColumn Header="Sum"  DisplayMemberBinding="{Binding }" />
-                        <GridViewColumn Header="Date"  DisplayMemberBinding="{Binding }" />
-                        <GridViewColumn Header="Frequency"  DisplayMemberBinding="{Binding }" />
-
-                    </GridView>
-                            </ListView.View>
-
-                        </ListView>
-                    </StackPanel>
-                </Grid>
+            <Button Margin="0 5 0 0" Width="200" Content="Добавить случайный расход" Click="Button_Click_1"></Button>
+        </StackPanel>
+    </Grid>
 </Page>

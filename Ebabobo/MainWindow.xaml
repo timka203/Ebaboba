@@ -19,7 +19,7 @@
             <StackPanel>
                 <Button Click="createCardBtn">Создать кошелёк</Button>
             </StackPanel>
-            
+
             <StackPanel Margin="5 50 5 5" Background="LightGray" >
                 <TextBlock Height="20" Text="Совершить перевод" TextAlignment="Center"/>
                 <TextBlock Text="Введите счёт получателя" />
@@ -43,15 +43,15 @@
             <TabItem Header="Информация кошелька" x:Name="Info" MouseMove="Info_MouseLeave">
                 <Frame x:Name="InfoFrame" NavigationUIVisibility="Hidden" />
             </TabItem>
-            
+
             <TabItem Header="Доходы/Расходы" x:Name="IncomeExpenses" MouseMove="IncomeExpenses_MouseLeave">
                 <Frame x:Name="IncomeExpensesFrame" NavigationUIVisibility="Hidden"/>
             </TabItem>
-            
+
             <TabItem Header="Журнал операций" x:Name="Operations" MouseMove="Operations_MouseLeave">
                 <Frame x:Name="OperationsFrame" NavigationUIVisibility="Hidden"/>
             </TabItem>
-            
+
             <TabItem Header="Создать транзакцию" x:Name="Transaction" MouseMove="Transaction_MouseLeave">
                 <Frame x:Name="TransactionFrame" NavigationUIVisibility="Hidden"/>
             </TabItem>

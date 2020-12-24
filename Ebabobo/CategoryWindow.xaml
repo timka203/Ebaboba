@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ebabobo"
         mc:Ignorable="d"
-        Title="Создание категории" Height="130" Width="400">
+        Title="Создание категории" Height="180" Width="400">
     <StackPanel Background="Bisque" >
         <TextBlock Margin="5 5 0 0" FontSize="15" FontWeight="Bold">Введите название категории</TextBlock>
         <TextBox Margin="0 5 5 0" Width="200" HorizontalAlignment="Right" x:Name="tb_categoryName"/>
+        <TextBlock Margin="5 5 0 0" FontSize="15" FontWeight="Bold">Выберите тип категории</TextBlock>
+        <ComboBox HorizontalAlignment="Right"  Width="100" x:Name="cbCurrency" Margin="0 0 5 0">
+            <ComboBoxItem>Расход</ComboBoxItem>
+            <ComboBoxItem>Доход</ComboBoxItem>
+        </ComboBox>
         <Button Margin="0 5 5 0" Content="Добавить" Width="100" HorizontalAlignment="Right" Click="addCategoryBtn"></Button>
     </StackPanel>
 </Window>

@@ -13,18 +13,20 @@ namespace Ebabobo.Models
     {
         public string TransactionTypeId { get; set; }
         public string Name { get; set; }
+        public string IsIncome { get; set; }
 
         public TransactionType() { }
 
         public TransactionType(string id)
         {
-            QueryLite query = new QueryLite("*Connection string here*");
+            QueryLite query = new QueryLite(ConfigurationManager.ConnectionStrings["EbabobaConnectionString"].ConnectionString);
             query.Add($"select * from TransactionType where @TransactionTypeId = {id}");
             query.AddParameter("TransactionTypeId", id.ToString());
             var dt = query.ExecuteAndGet();
 
             this.TransactionTypeId = id;
             this.Name = dt.Rows[0]["Name"].ToString();
+            this.IsIncome = dt.Rows[0]["IsIncome"].ToString();
 
             query.Clear();
         }
@@ -35,6 +37,7 @@ namespace Ebabobo.Models
 
             Dictionary<string, string> updates = new Dictionary<string, string>();
             updates.Add("Name", this.Name);
+            updates.Add("IsIncome", this.IsIncome);
 
             query.Add("update tt");
             query.AddUpdates(updates);
@@ -49,7 +52,7 @@ namespace Ebabobo.Models
             QueryLite query = new QueryLite(ConfigurationManager.ConnectionStrings["EbabobaConnectionString"].ConnectionString);
 
             query.Add("insert into TransactionType");
-            query.AddInsertValues(new List<string>() { this.Name });
+            query.AddInsertValues(new List<string>() { this.Name, this.IsIncome });
 
             query.Execute();
             query.Clear();
