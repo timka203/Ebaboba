@@ -1,5 +1,4 @@
-﻿using Ebabobo.Models;
-using Ebabobo.Pages;
+﻿using Ebabobo.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,16 +28,9 @@ namespace Ebabobo
         public MainWindow()
         {
             InitializeComponent();
-            FillCardGrid();
-
             InfoFrame.Navigate(InfoPage);
         }
 
-        private void FillCardGrid()
-        {
-            var dt = new Card().SelectAll();
-            listOfCards.DataContext = dt.DefaultView;
-        }
         private void IncomeExpenses_MouseLeave(object sender, MouseEventArgs e)
         {
             if (IncomeExpenses.IsSelected)
@@ -74,23 +66,12 @@ namespace Ebabobo
         private void createCardBtn(object sender, RoutedEventArgs e)
         {
             CreateAccount window = new CreateAccount();
-            //window.Close
             window.Show();
         }
 
         private void SendBtn(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void listOfOperationsGV_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var a = 0;
-        }
-
-        private void listOfOperationsGV_Selected(object sender, RoutedEventArgs e)
-        {
-            var a = 0;
         }
     }
 }

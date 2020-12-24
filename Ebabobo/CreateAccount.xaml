@@ -11,8 +11,8 @@
         <TextBox Margin="0 5 5 0" Width="200" HorizontalAlignment="Right" x:Name="tb_accountName"/>
         <TextBlock Margin="5 5 0 0" FontSize="15" FontWeight="Bold">Выберите валюту</TextBlock>
         <ComboBox HorizontalAlignment="Right"  Width="100" x:Name="cbCurrency" Margin="0 0 5 0">
-            
+
         </ComboBox>
-        <Button Margin="0 5 5 0" Content="Добавить" Width="100" HorizontalAlignment="Right" Click="addAccountBtn"></Button>
+        <Button Style="{StaticResource SecondaryButton}" Margin="0 5 5 0" Content="Добавить" Width="100" HorizontalAlignment="Right" Click="addAccountBtn"></Button>
     </StackPanel>
 </Window>

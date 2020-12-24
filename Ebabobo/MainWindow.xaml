@@ -10,14 +10,14 @@
         <StackPanel DockPanel.Dock="Right" Width="230"  Background="Bisque">
 
             <StackPanel>
-                <Grid  x:Name="listOfCards" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" Background="Gray" >
-                    <DataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  x:Name="listOfOperationsGV" ItemsSource="{Binding}" MouseDoubleClick="listOfOperationsGV_Selected">
+                <Grid ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150">
+                    <DataGrid Style="{StaticResource StyleDG}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  x:Name="listOfCards" ItemsSource="{Binding}">
                     </DataGrid>
                 </Grid>
             </StackPanel>
 
             <StackPanel>
-                <Button Click="createCardBtn">Создать кошелёк</Button>
+                <Button Margin="0 5 0 0" Style="{StaticResource SecondaryButton}" Click="createCardBtn" x:Name="Test">Создать кошелёк</Button>
             </StackPanel>
             
             <StackPanel Margin="5 50 5 5" Background="LightGray" >
@@ -32,7 +32,7 @@
                 </DockPanel>
                 <TextBlock  Text="Введите сумму" />
                 <TextBox Background="Gray" x:Name="tbSum"></TextBox>
-                <Button HorizontalAlignment="Right" Content="Отправить" Click="SendBtn"/>
+                <Button Style="{StaticResource SecondaryButton}" HorizontalAlignment="Right" Content="Отправить" Click="SendBtn"/>
             </StackPanel>
 
         </StackPanel>

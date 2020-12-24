@@ -9,43 +9,44 @@
       Title="OperationsPage">
 
     <StackPanel  Background="Bisque">
-
         <Grid >
-            <Grid Background="LightGray"  >
+            <Border Background="LightGray"  CornerRadius="12">
+                <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
-
+                  
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Orientation="Vertical" Margin="5 5">
-                    <TextBlock>Доход</TextBlock>
-                    <CheckBox x:Name="chb_OnlyIncome"></CheckBox>
-                    <TextBlock>Расход</TextBlock>
-                    <CheckBox x:Name="chb_OnlyOutcome"></CheckBox>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 5">
-                    <TextBlock>От</TextBlock>
-                    <DatePicker Name="First_date" IsDropDownOpen="True" SelectedDateFormat="Short" ></DatePicker>
-                    <TextBlock>До</TextBlock>
+                <TextBlock>Только Доход</TextBlock>
+                <CheckBox x:Name="chb_OnlyIncome"></CheckBox>
+                <TextBlock>Только Расход</TextBlock>
+                <CheckBox x:Name="chb_OnlyOutcome"></CheckBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 5">
+                <TextBlock>От</TextBlock>
+                <DatePicker Name="First_date" IsDropDownOpen="True" SelectedDateFormat="Short" ></DatePicker>
+                <TextBlock>До</TextBlock>
 
-                    <DatePicker Name="Second_date" IsDropDownOpen="True" SelectedDateFormat="Short" />
-                </StackPanel>
-                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="20 5" Width="100">
-                    <TextBlock>Категория</TextBlock>
-                    <ComboBox  x:Name="cbTypeName"></ComboBox>
-                    <TextBlock>Валюта</TextBlock>
-                    <ComboBox  x:Name="cbCurrencyName"></ComboBox>
-                </StackPanel>
-                <Button Margin="10" Grid.Column="3" Click="Button_Click">Submit</Button>
-            </Grid>
+                <DatePicker Name="Second_date" IsDropDownOpen="True" SelectedDateFormat="Short" />
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="20 5" Width="100">
+                <TextBlock>Категория</TextBlock> 
+                <ComboBox  x:Name="cbTypeName"></ComboBox>
+                <TextBlock>Валюта</TextBlock>
+                <ComboBox  x:Name="cbCurrencyName"></ComboBox>
+            </StackPanel>
+                <Button Style="{StaticResource SecondaryButton}" Margin="10" Grid.Column="3"> Submit</Button>
+        </Grid>
+            </Border>
         </Grid>
 
 
-        <Grid  x:Name="listOfOperations" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" Background="Gray" >
-            <DataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  x:Name="listOfOperationsGV" ItemsSource="{Binding}">
+        <Grid Margin="0 5 0 0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" >
+            <DataGrid Style="{StaticResource StyleDG}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  x:Name="listOfOperations" ItemsSource="{Binding}">
             </DataGrid>
         </Grid>
     </StackPanel>
