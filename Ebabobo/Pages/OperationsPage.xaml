@@ -1,0 +1,52 @@
+﻿<Page x:Class="Ebabobo.Pages.OperationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Ebabobo.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OperationsPage">
+
+    <StackPanel  Background="Bisque">
+
+        <Grid >
+            <Grid Background="LightGray"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="5 5">
+                    <TextBlock>Доход</TextBlock>
+                    <CheckBox x:Name="chb_OnlyIncome"></CheckBox>
+                    <TextBlock>Расход</TextBlock>
+                    <CheckBox x:Name="chb_OnlyOutcome"></CheckBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 5">
+                    <TextBlock>От</TextBlock>
+                    <DatePicker Name="First_date" IsDropDownOpen="True" SelectedDateFormat="Short" ></DatePicker>
+                    <TextBlock>До</TextBlock>
+
+                    <DatePicker Name="Second_date" IsDropDownOpen="True" SelectedDateFormat="Short" />
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Vertical" Margin="20 5" Width="100">
+                    <TextBlock>Категория</TextBlock>
+                    <ComboBox  x:Name="cbTypeName"></ComboBox>
+                    <TextBlock>Валюта</TextBlock>
+                    <ComboBox  x:Name="cbCurrencyName"></ComboBox>
+                </StackPanel>
+                <Button Margin="10" Grid.Column="3" Click="Button_Click">Submit</Button>
+            </Grid>
+        </Grid>
+
+
+        <Grid  x:Name="listOfOperations" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" Background="Gray" >
+            <DataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  x:Name="listOfOperationsGV" ItemsSource="{Binding}">
+            </DataGrid>
+        </Grid>
+    </StackPanel>
+</Page>

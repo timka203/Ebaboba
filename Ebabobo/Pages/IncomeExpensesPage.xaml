@@ -1,0 +1,50 @@
+﻿<Page x:Class="Ebabobo.Pages.IncomeExpensesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Ebabobo.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="IncomeExpensesPage">
+
+<Grid Background="Bisque">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="5 0 0 0">
+            <TextBlock FontWeight="Bold" FontSize="15" Margin="0 5 0 0">Список Доходов</TextBlock>
+            <ListView Margin="0 5 0 0" Background="Gray"  Name="Income" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" MouseDoubleClick="ContactList_MouseDoubleClick" MouseRightButtonUp="ContactList_MouseDoubleClick" >
+
+                            <ListView.View>
+
+                                <GridView>
+                                    <GridViewColumn Header="TypeID"  DisplayMemberBinding="{Binding }" />
+                                    <GridViewColumn Header="Sum"  DisplayMemberBinding="{Binding }" />
+                        <GridViewColumn Header="Date"  DisplayMemberBinding="{Binding }" />
+                        <GridViewColumn Header="Frequency"  DisplayMemberBinding="{Binding }" />
+                    </GridView>
+                            </ListView.View>
+
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel  Grid.Row="0" Grid.Column="2" Margin="5 0 0 0">
+            <TextBlock FontWeight="Bold" FontSize="15" Margin="0 5 0 0">Список Расходов</TextBlock>
+            <ListView Margin="0 5 0 0"  Background="Gray" Name="Outcome" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="150" MouseDoubleClick="ContactList_MouseDoubleClick" MouseRightButtonUp="ContactList_MouseDoubleClick" >
+
+                            <ListView.View>
+
+                                <GridView>
+                                    <GridViewColumn Header="TypeID"  DisplayMemberBinding="{Binding }" />
+                                    <GridViewColumn Header="Sum"  DisplayMemberBinding="{Binding }" />
+                        <GridViewColumn Header="Date"  DisplayMemberBinding="{Binding }" />
+                        <GridViewColumn Header="Frequency"  DisplayMemberBinding="{Binding }" />
+
+                    </GridView>
+                            </ListView.View>
+
+                        </ListView>
+                    </StackPanel>
+                </Grid>
+</Page>
