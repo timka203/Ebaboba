@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ebabobo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,26 @@ namespace Ebabobo
 
         private void addCategoryBtn(object sender, RoutedEventArgs e)
         {
+            TransactionType transactionType = new TransactionType();
+            transactionType.Name = tb_categoryName.Text;
+            transactionType.IsIncome = cbCurrency.SelectedIndex.ToString();
 
+            if (transactionType.Name != "")
+            {
+                if (transactionType.IsIncome == "0" || transactionType.IsIncome == "1")
+                {
+                    transactionType.Insert();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Выберите расход это или доход.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введите Название категорий и расход это или доход.");
+            }
         }
     }
 }

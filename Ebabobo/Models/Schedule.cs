@@ -15,6 +15,7 @@ namespace Ebabobo.Models
         public string CardId { get; set; }
         public string Date { get; set; }
         public string Frequency { get; set; }
+        public string IsIncome { get; set; }
         public string Sum { get; set; }
         public string TypeId { get; set; }
 
@@ -22,14 +23,15 @@ namespace Ebabobo.Models
         public Schedule(string id)
         {
             QueryLite query = new QueryLite(ConfigurationManager.ConnectionStrings["EbabobaConnectionString"].ConnectionString);
-            query.Add($"select * from Schedule where @ScheduleId = {id}");
+            query.Add($"select * from Schedule where ScheduleId = {id}");
             query.AddParameter("ScheduleId", id.ToString());
             var dt = query.ExecuteAndGet();
 
             this.ScheduleId = id;
-            this.CardId = dt.Rows[0]["Name"].ToString();
+            this.CardId = dt.Rows[0]["CardId"].ToString();
             this.Date = dt.Rows[0]["Date"].ToString();
             this.Frequency = dt.Rows[0]["Frequency"].ToString();
+            this.IsIncome = dt.Rows[0]["IsIncome"].ToString();
             this.Sum = dt.Rows[0]["Sum"].ToString();
             this.TypeId = dt.Rows[0]["TypeId"].ToString();
 
@@ -44,13 +46,14 @@ namespace Ebabobo.Models
             updates.Add("CardId", this.CardId);
             updates.Add("Date", this.Date);
             updates.Add("Frequency", this.Frequency);
+            updates.Add("IsIncome", this.IsIncome);
             updates.Add("Sum", this.Sum);
             updates.Add("TypeId", this.TypeId);
 
 
             query.Add("update cr");
             query.AddUpdates(updates);
-            query.Add("from Currency cr where ScheduleId = @ScheduleId");
+            query.Add("from Schedule cr where ScheduleId = @ScheduleId");
             query.AddParameter("@ScheduleId", this.ScheduleId);
             query.Execute();
             query.Clear();
@@ -61,16 +64,45 @@ namespace Ebabobo.Models
             QueryLite query = new QueryLite(ConfigurationManager.ConnectionStrings["EbabobaConnectionString"].ConnectionString);
 
             query.Add("insert into Schedule");
-            query.AddInsertValues(new List<string>() { this.CardId, this.Date, this.Frequency, this.Sum, this.TypeId });
+            query.AddInsertValues(new List<string>() { this.CardId, this.Date, this.Frequency, this.Sum, this.TypeId, this.IsIncome });
 
             query.Execute();
             query.Clear();
+        }
+
+
+        public DataTable SelectByCardId(string cardId)
+        {
+            QueryLite query = new QueryLite(ConfigurationManager.ConnectionStrings["EbabobaConnectionString"].ConnectionString);
+            query.Add($"select * from Schedule where CardId = {cardId}");
+            var returnValue = query.ExecuteAndGet();
+            query.Clear();
+            return returnValue;
         }
 
         public DataTable SelectAll()
         {
             QueryLite query = new QueryLite(ConfigurationManager.ConnectionStrings["EbabobaConnectionString"].ConnectionString);
             query.Add($"select * from Schedule");
+            var returnValue = query.ExecuteAndGet();
+            query.Clear();
+            return returnValue;
+        }
+
+
+        public DataTable SelectAllOutcome()
+        {
+            QueryLite query = new QueryLite(ConfigurationManager.ConnectionStrings["EbabobaConnectionString"].ConnectionString);
+            query.Add($"select * from History where IsIncome = 0");
+            var returnValue = query.ExecuteAndGet();
+            query.Clear();
+            return returnValue;
+        }
+
+        public DataTable SelectAllIncome()
+        {
+            QueryLite query = new QueryLite(ConfigurationManager.ConnectionStrings["EbabobaConnectionString"].ConnectionString);
+            query.Add($"select * from History where IsIncome = 1");
             var returnValue = query.ExecuteAndGet();
             query.Clear();
             return returnValue;
@@ -85,4 +117,5 @@ namespace Ebabobo.Models
             query.Clear();
         }
     }
+
 }
